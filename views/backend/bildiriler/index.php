@@ -2,21 +2,22 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel kouosl\isbasvuru\models\NoticecatSearch */
+/* @var $searchModel backend\models\BildirilerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'İlan Kategorileri Oluştur';
+$this->title = 'İlanlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="noticecat-index">
+<div class="bildiriler-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('İlan kategorisi oluştur', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yeni Bir İlan Oluştur', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,10 +26,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'notice_id',
-            'category',
+            //'self_id',
+            //'notice_id',
+            [
+                'attribute'=>'notice_id',
+                'value'=>'notice.category',
+            ],
+            'header',
+            'description:ntext',
+            'date',
+            //'expired',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>

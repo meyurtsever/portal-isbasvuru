@@ -1,12 +1,12 @@
-<?= $this->title = 'Modül çalışıyor.'; ?>
+<?= $this->title = 'İş Başvuru Modülü Anasayfası'; ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Kou Osl Yii2 App</h1>
+        <h1>İş Başvuru Modülü</h1>
 
-        <p class="lead">Örnek uygulamayı başarılı bir şekilde çalıştırdınız.</p>
+        <p class="lead">İlgili ilanlar için detay görebilir ve ilanlara başvurabilirsiniz.</p>
 
-        <p><a class="btn btn-lg btn-success" href="#">Modüller ve konfürgasyon!</a></p>
+        <p><a class="btn btn-lg btn-success" href="/isbasvuru/bildiriler">İlanlara Git</a></p>
     </div>
 
 </div>

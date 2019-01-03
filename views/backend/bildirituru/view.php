@@ -4,23 +4,23 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model kouosl\isbasvuru\models\Noticecat */
+/* @var $model backend\models\Bildirituru */
 
-$this->title = $model->notice_id;
-$this->params['breadcrumbs'][] = ['label' => 'Noticecats', 'url' => ['index']];
+$this->title = $model->category;
+$this->params['breadcrumbs'][] = ['label' => 'Kategoriler', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="noticecat-view">
+<div class="bildirituru-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->notice_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->notice_id], [
+        <?= Html::a('Güncelle', ['update', 'id' => $model->notice_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Sil', ['delete', 'id' => $model->notice_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'İlgili kayıt silinecek. Devam edilsin mi?',
                 'method' => 'post',
             ],
         ]) ?>

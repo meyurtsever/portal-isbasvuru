@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model kouosl\isbasvuru\models\Noticecat */
+/* @var $model backend\models\Applicant */
 
-$this->title = 'Create Noticecat';
-$this->params['breadcrumbs'][] = ['label' => 'Noticecats', 'url' => ['index']];
+$this->title = 'Başvuru Oluştur';
+$this->params['breadcrumbs'][] = ['label' => 'Başvurular', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="noticecat-create">
+<div class="applicant-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

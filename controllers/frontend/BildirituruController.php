@@ -1,18 +1,19 @@
 <?php
 
-namespace kouosl\isbasvuru\controllers\backend;
+namespace kouosl\isbasvuru\controllers\frontend;
 
 use Yii;
-use kouosl\isbasvuru\models\Noticecat;
-use kouosl\isbasvuru\models\NoticecatSearch;
+use kouosl\isbasvuru\models\Bildirituru;
+use kouosl\isbasvuru\models\BildirituruSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
- * NoticecatController implements the CRUD actions for Noticecat model.
+ * BildirituruController implements the CRUD actions for Bildirituru model.
  */
-class NoticecatController extends Controller
+class BildirituruController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -20,6 +21,16 @@ class NoticecatController extends Controller
     public function behaviors()
     {
         return [
+            'access'=>[
+                'class'=>AccessControl::classname(),
+                'only'=>['create','update','delete'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -30,12 +41,12 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Lists all Noticecat models.
+     * Lists all Bildirituru models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NoticecatSearch();
+        $searchModel = new BildirituruSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +56,7 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Displays a single Noticecat model.
+     * Displays a single Bildirituru model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +69,13 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Creates a new Noticecat model.
+     * Creates a new Bildirituru model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Noticecat();
+        $model = new Bildirituru();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->notice_id]);
@@ -76,7 +87,7 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Updates an existing Noticecat model.
+     * Updates an existing Bildirituru model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +107,7 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Deletes an existing Noticecat model.
+     * Deletes an existing Bildirituru model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +121,15 @@ class NoticecatController extends Controller
     }
 
     /**
-     * Finds the Noticecat model based on its primary key value.
+     * Finds the Bildirituru model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Noticecat the loaded model
+     * @return Bildirituru the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Noticecat::findOne($id)) !== null) {
+        if (($model = Bildirituru::findOne($id)) !== null) {
             return $model;
         }
 

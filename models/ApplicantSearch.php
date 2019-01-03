@@ -4,12 +4,12 @@ namespace kouosl\isbasvuru\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use kouosl\isbasvuru\models\Noticecat;
+use kouosl\isbasvuru\models\Applicant;
 
 /**
- * NoticecatSearch represents the model behind the search form of `backend\models\Noticecat`.
+ * ApplicantSearch represents the model behind the search form of `backend\models\Applicant`.
  */
-class NoticecatSearch extends Noticecat
+class ApplicantSearch extends Applicant
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class NoticecatSearch extends Noticecat
     public function rules()
     {
         return [
-            [['notice_id'], 'integer'],
-            [['category'], 'safe'],
+            [['applicant_id', 'user_id', 'notice_id'], 'integer'],
+            [['name', 'surname', 'experienceforjob', 'cvfilelink', 'about_yourself'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class NoticecatSearch extends Noticecat
      */
     public function search($params)
     {
-        $query = Noticecat::find();
+        $query = Applicant::find();
 
         // add conditions that should always apply here
 
@@ -58,10 +58,16 @@ class NoticecatSearch extends Noticecat
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'applicant_id' => $this->applicant_id,
+            'user_id' => $this->user_id,
             'notice_id' => $this->notice_id,
         ]);
 
-        $query->andFilterWhere(['like', 'category', $this->category]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'surname', $this->surname])
+            ->andFilterWhere(['like', 'experienceforjob', $this->experienceforjob])
+            ->andFilterWhere(['like', 'cvfilelink', $this->cvfilelink])
+            ->andFilterWhere(['like', 'about_yourself', $this->about_yourself]);
 
         return $dataProvider;
     }
